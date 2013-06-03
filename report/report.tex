@@ -1,0 +1,181 @@
+
+\documentclass[a4paper]{article} %twocolumn
+
+\usepackage{fontspec}
+\usepackage{xunicode, xltxtra}
+\usepackage[table]{xcolor}
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{parskip}
+
+%\usepackage{bytefield}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usetikzlibrary{automata}
+
+\usepackage{listings}
+% \lstset{
+	% language=VHDL,
+	% tabsize=4,
+	% columns=fixed,
+	% upquote=true,
+	% extendedchars=true,
+    % inputencoding=utf8,
+	% showtabs=false,
+	% showspaces=false,
+	% showstringspaces=true,
+	% breaklines=true,
+% }
+
+\definecolor{ltbluegray}{rgb}{0.97,0.97,1}
+\definecolor{ltred}{rgb}{.75,0,0}
+\definecolor{dkgreen}{rgb}{0,0.5,0}
+\definecolor{ltblue}{rgb}{0,0,.75}
+\lstset{
+  language          = VHDL,                 % langage par dfaut
+  captionpos        = b,                    % position du caption
+  numbers           = left,                 % affichage des numro de lignes
+  frame             = trBL,                 % cadre du listing
+  tabsize           = 2,                    % taille de la tabulation
+  basicstyle        = \small,      % style du listing
+  commentstyle      = \color{dkgreen}, % Comment Style
+  stringstyle       = \color{ltred}, % Strings Style
+  keywordstyle      = \color{ltblue}, % Keyword style
+  breaklines        = true,                 % permet de sparer les lignes
+  postbreak         = \Pisymbol{pzd}{229},  % symbol devant la coupure
+  backgroundcolor   = \color{ltbluegray},
+  upquote           = true,                 % use the ' quote,
+}
+
+\usepackage{graphicx}
+
+\usepackage[
+	xetex,
+	unicode,
+	breaklinks,
+	hyperfootnotes,
+	hyperindex,
+	backref,
+	bookmarks,
+	bookmarksnumbered,
+	pdfusetitle
+]{hyperref}
+
+\begin{document}
+
+\title{Projet d'électronique III}
+\author{Alexandre Carlessi \and Thomas Denoréaz \and Johan Berdat}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+L'objectif du projet est de développer un ordinateur de bord pour une voiture.
+Cela permet d'avoir une vision d'ensemble de la conception d'un système électronique.
+
+L'automobile possède un certains nombre de capteurs (tachymètre, niveau d'essence...) qui relaient leur informations analogique jusqu'à l'unité de traitement.
+Le signal est échantillonné et stocké en mémoire, pour être analysé par l'unité de contrôle.
+Cette dernière prend les décisions qui s'imposent (avertissement et régulations) et envoie les informations à l'interface utilisateur.
+
+\begin{center}
+\includegraphics[scale=0.6]{global.pdf}
+\end{center}
+
+
+\section{Composants analogiques et échantillonage}
+
+On peut citer beaucoup grandeurs à mesurer dans une voiture.
+\begin{itemize}
+\item
+	Tachymètres, pour mesurer la vitesse des roues et du moteur.
+\item
+	Thermomètres, pour mesurer la température extérieure et du moteur.
+\item
+	Baromètres, pour la pression de l'huile et autres fluides.
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.6]{sensor.pdf}
+\end{center}
+
+Des amplificateurs sont utilisés sur les capteurs pour permettre au signal analogique de parcourir les grandes distances qui les séparent du système central.
+
+Pour économiser le nombre de composants utilisés, on n'utilise qu'un seul convertisseur analogique-numérique, après un démultiplexeur.
+Un contrôleur s'occupe d'échantillonner successivement les différents capteurs, pour mettre à jour les registres qui leur correspondent.
+
+Ces informations ne requièrent pas une précision élevée.
+Nous avons donc choisi une fréquence d'échantillonage pour chaque capteur de $10 H\!z$.
+Ainsi, si nous avons 5 capteurs, le contrôleur aura une fréquence de $50 H\!z$.
+
+Après le démultiplexeur, un filtre actif s'occupe de nettoyer le signal.
+On a opté pour un simple filtre passe-bas, afin de filtrer les fréquences supérieures à $10 H\!z$.
+Il serait bien sûr possible de cascader ce filtre pour améliorer la qualité (et éventuellement considérer d'autres types de filtres, tel le Sallen-Key de Butterworth d'ordre $N$).
+
+L'étape suivante consiste à convertir le signal analogique en signal numérique.
+Pour cela, on a à disposition plusieurs sortes de convertisseurs.
+Nous avons choisi la famille de convertisseurs A/N à approximations successives, étant adaptés pour un usage général.
+En effet, ils représentent un bon compromis précision, vitesse, prix.
+
+Le seul désavantage de ce genre de convertisseur est le nombre limité de bits disponibles (8 à 14 bits).
+Pour corriger ce problème, il est possible de monter ces CAN en cascade, et ainsi augmenter la résolution.
+Nous estimons que 16 bits sont suffisants pour les grandeurs que nous utilisons.
+
+\begin{center}
+\includegraphics[scale=0.6]{can.pdf}
+\end{center}
+
+Enfin, ce signal numérique est mémorisé dans des registres, qui pourront être lus par l'unité principale.
+
+
+\section{Unités de contrôle et de traitement}
+
+\begin{center}
+\includegraphics[scale=0.6]{uc.pdf}
+\end{center}
+
+L'unité de contrôle (UC) est reliée à tout les autres composants, et se charge de coordonner les tâches.
+
+Du côté de la mémoire, les différents registres des capteurs sont accessibles en lecture seule.
+À cela s'ajoute une mémoire vive qui contient les données nécessaires au système.
+Nous proposons l'utilisation d'une SRAM pour conserver les valeurs (compteur kilométrique, par exemple) lorsque le système est sous tension.
+Et lorsque le système est privé d'alimentation, une copie de la mémoire est sauvegardée sur une mémoire non-volatile, Flash.
+Cette décision est motivée par le nombre limité d'écriture sur les supports Flash.
+
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[scale=0.3]{4T_SRAM_Cell.png} \\
+\textit{SRAM (source \href{http://en.wikipedia.org/wiki/Static_random-access_memory}{Wikipédia})}
+\end{tabular}
+\end{center}
+
+\textbf{TODO UC description du fonctionnement (algorithmes?)}
+
+\textbf{TODO UC implémentation en VHDL}
+
+\textbf{TODO HORLOGE description des choix et fonctionnalités}
+
+\textbf{TODO HORLOGE implémentation en VHDL}
+
+
+\section{Interface utilisateur}
+
+\textbf{TODO fonctionnalités (boutons, affichage...)}
+
+\textbf{TODO implémentation en Java}
+
+
+\section{Conclusion}
+
+\textbf{TODO wtf}
+
+
+\end{document}
