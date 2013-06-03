@@ -145,10 +145,14 @@ Enfin, ce signal numérique est mémorisé dans des registres, qui pourront êtr
 L'unité de contrôle (UC) est reliée à tout les autres composants, et se charge de coordonner les tâches.
 
 Du côté de la mémoire, les différents registres des capteurs sont accessibles en lecture seule.
-À cela s'ajoute une mémoire vive qui contient les données nécessaires au système.
-Nous proposons l'utilisation d'une SRAM pour conserver les valeurs (compteur kilométrique, par exemple) lorsque le système est sous tension.
-Et lorsque le système est privé d'alimentation, une copie de la mémoire est sauvegardée sur une mémoire non-volatile, Flash.
+Une mémoire SRAM nous paraît être un bon choix, rapide et robuste.
+Au vu de la taille minime nécessaire, son coût est acceptable.
+
+À cela s'ajoute une autre mémoire vive qui contient les données nécessaires au système.
+De nouveau, nous utilisons une SRAM pour conserver les valeurs (compteur kilométrique, par exemple) lorsque le système est sous tension.
+Et lorsque le système est privé d'alimentation, une copie de la mémoire est sauvegardée sur une mémoire non-volatile, de type Flash.
 Cette décision est motivée par le nombre limité d'écriture sur les supports Flash.
+En effet, avec une fréquence d'écriture de $10 H\!z$, la mémoire Flash atteindrait rapidement ses limites de réécriture.
 
 \begin{center}
 \begin{tabular}{c}
