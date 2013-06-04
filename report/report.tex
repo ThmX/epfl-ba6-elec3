@@ -1,42 +1,88 @@
 
-\documentclass[a4paper]{article} %twocolumn
 
-\usepackage{fontspec}
-\usepackage{xunicode, xltxtra}
-\usepackage[table]{xcolor}
-\usepackage{polyglossia}
-\setdefaultlanguage{french}
+
+
+
+
+
+%------------------------------------------------------------------------------
+%
+%	BA6 - Database systems
+%
+%	Authors :
+%		203267 - Bastien Antoine
+%		183785 - Denoréaz Thomas
+%		185078 - Dieulivol David
+%
+%	Versions :
+%		2013.03.30 - Initial version
+%
+
+%--------------DOCUMENT--------------------------------------------------------
+\documentclass[a4paper,oneside,11pt]{article}  % Type de document
+\usepackage[french]{babel}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{a4wide}
+\usepackage{mathspec}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\usepackage[table]{xcolor}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+
+
+%--------------PACKAGES--------------------------------------------------------
+\usepackage[Bjornstrup]{fncychap}           % Chapitres
+\usepackage{indentfirst}
+
+\usepackage{fancyhdr}                       % Entete et pied de pages
+\usepackage[outerbars]{changebar}           % Positionnement barre en marge externe
+\usepackage[table]{xcolor}
+\usepackage{lastpage}
+%\usepackage{subfigure}
+\usepackage{natbib}
+\usepackage{paralist}
+\usepackage{makeidx}                        % Permet de créer une indexation
+\usepackage{multicol}                       % Gestion de plusieurs colonnes
+\usepackage{multirow}
+\usepackage{array}                          % 
+\usepackage{a4wide}                         % Utilisation de toute la page A4
 \usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
 
+\usepackage{listings}                       % Affichage de code source
+
+\usepackage{pifont}                         % Polices supplementaires
+\usepackage{textcomp}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{ae}                             % Affichage sous Adobe Reader
+\usepackage{ifpdf}
+\usepackage{url}
+\usepackage{wrapfig}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%\usepackage[disable]{todonotes}
 \usepackage{todonotes}
 
-\usepackage{parskip}
+\usepackage{bytefield}
 
-%\usepackage{bytefield}
 \usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 \usetikzlibrary{arrows}
 \usetikzlibrary{automata}
 
-\usepackage{listings}
-% \lstset{
-	% language=VHDL,
-	% tabsize=4,
-	% columns=fixed,
-	% upquote=true,
-	% extendedchars=true,
-    % inputencoding=utf8,
-	% showtabs=false,
-	% showspaces=false,
-	% showstringspaces=true,
-	% breaklines=true,
-% }
+\DeclareTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ } 
+
+
+%\usepackage{parskip}
 
 \definecolor{ltbluegray}{rgb}{0.97,0.97,1}
 \definecolor{ltred}{rgb}{.75,0,0}
@@ -112,19 +158,19 @@ On peut citer beaucoup grandeurs à mesurer dans une voiture.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{sensor.pdf}
-	\caption{Schema bloc du système}
+	\caption{Schéma bloc du système de mesure}
 \end{figure}
 
 Des amplificateurs sont utilisés sur les capteurs pour permettre au signal analogique de parcourir les grandes distances qui les séparent du système central.
 
-Pour économiser le nombre de composants utilisés, on n'utilise qu'un seul convertisseur analogique-numérique, après un démultiplexeur.
+Pour économiser le nombre de composants utilisés, on n'utilise qu'un seul convertisseur analogique-numérique, après un multiplexeur.
 Un contrôleur s'occupe d'échantillonner successivement les différents capteurs, pour mettre à jour les registres qui leur correspondent.
 
 Ces informations ne requièrent pas une précision élevée.
 Nous avons donc choisi une fréquence d'échantillonage pour chaque capteur de $10 H\!z$.
 Ainsi, si nous avons 5 capteurs, le contrôleur aura une fréquence de $50 H\!z$.
 
-Après le démultiplexeur, un filtre actif s'occupe de nettoyer le signal.
+Après le multiplexeur, un filtre actif s'occupe de nettoyer le signal.
 On a opté pour un simple filtre passe-bas, afin de filtrer les fréquences supérieures à $10 H\!z$.
 Il serait bien sûr possible de cascader ce filtre pour améliorer la qualité (et éventuellement considérer d'autres types de filtres, tel le Sallen-Key de Butterworth d'ordre $N$).
 
@@ -152,10 +198,10 @@ Enfin, ce signal numérique est mémorisé dans des registres, qui pourront êtr
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{uc.pdf}
-	\caption{Convertisseur analogique-digital 16-bits}
+	\caption{Schéma bloc du système}
 \end{figure}
 
-L'unité de contrôle (UC) est reliée à tout les autres composants, et se charge de coordonner les tâches.
+L'unité de contrôle (UC) est reliée à tous les autres composants, et se charge de coordonner les tâches.
 
 Du côté de la mémoire, les différents registres des capteurs sont accessibles en lecture seule.
 Une mémoire SRAM nous paraît être un bon choix, rapide et robuste.
@@ -175,23 +221,35 @@ En effet, avec une fréquence d'écriture de $10 H\!z$, la mémoire Flash attein
 
 \todo[inline]{UC description du fonctionnement (algorithmes?)}
 
-\todo[inline]{UC implémentation en VHDL}
+\subsection{Clock}
+\lstinputlisting[caption=Module de contrôle de l'horloge]{ecu_clock.vhd}
 
-\todo[inline]{HORLOGE description des choix et fonctionnalités}
+\subsection{Electronic Control Unit}
 
-\todo[inline]{HORLOGE implémentation en VHDL}
+\missingfigure{Graphe des états}
 
+\lstinputlisting[caption=Module de gestion du système (UC)]{ecu.vhd}
 
-\section{Interface utilisateur}
+\section{Simulation - interface utilisateur}
+
+\missingfigure{Java UI}
+
+L'interface utilisateur a été implémenté en utilisant en tâche de fond \textit{ModelSim}, qui permet de simuler du code VHDL.
+L'idée est d'utiliser directement le vrai code VHDL de notre interface en simulant les entrées/sorties du système de mesure.
+
+Le module d'affichage a été développé en Java, en utilisant le framework \textit{Spring}\footnote{\url{http://www.springsource.org/}} pour simplifier le travail.
+Le module de simulation est une coopération entre Java et VHDL.
+En VHDL la simulation est effectuée, alors qu'en Java le traitement des données est fait.
 
 \todo[inline]{fonctionnalités (boutons, affichage...)}
 
-\todo[inline]{implémentation en Java}
+Voici un exemple de listing permettant de contrôler le simulateur.
+
+\lstinputlisting[caption=Testbench de contrôle du Simuateur en VHDL]{simulator.vhd}
 
 
 \section{Conclusion}
 
-\todo[inline]{wtf}
-
+\todo[inline]{Just say something here -\_-}
 
 \end{document}
