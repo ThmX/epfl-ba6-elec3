@@ -10,6 +10,10 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{a4wide}
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+
+\usepackage{todonotes}
 
 \usepackage{parskip}
 
@@ -86,9 +90,11 @@ L'automobile possède un certains nombre de capteurs (tachymètre, niveau d'esse
 Le signal est échantillonné et stocké en mémoire, pour être analysé par l'unité de contrôle.
 Cette dernière prend les décisions qui s'imposent (avertissement et régulations) et envoie les informations à l'interface utilisateur.
 
-\begin{center}
-\includegraphics[scale=0.6]{global.pdf}
-\end{center}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{global.pdf}
+	\caption{Schema bloc du système}
+\end{figure}
 
 
 \section{Composants analogiques et échantillonage}
@@ -103,9 +109,11 @@ On peut citer beaucoup grandeurs à mesurer dans une voiture.
 	Baromètres, pour la pression de l'huile et autres fluides.
 \end{itemize}
 
-\begin{center}
-\includegraphics[scale=0.6]{sensor.pdf}
-\end{center}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{sensor.pdf}
+	\caption{Schema bloc du système}
+\end{figure}
 
 Des amplificateurs sont utilisés sur les capteurs pour permettre au signal analogique de parcourir les grandes distances qui les séparent du système central.
 
@@ -129,18 +137,23 @@ Le seul désavantage de ce genre de convertisseur est le nombre limité de bits 
 Pour corriger ce problème, il est possible de monter ces CAN en cascade, et ainsi augmenter la résolution.
 Nous estimons que 16 bits sont suffisants pour les grandeurs que nous utilisons.
 
-\begin{center}
-\includegraphics[scale=0.6]{can.pdf}
-\end{center}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{can.pdf}
+	\caption{Convertisseur analogique-digital 16-bits}
+\end{figure}
 
 Enfin, ce signal numérique est mémorisé dans des registres, qui pourront être lus par l'unité principale.
 
 
 \section{Unités de contrôle et de traitement}
 
-\begin{center}
-\includegraphics[scale=0.6]{uc.pdf}
-\end{center}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{uc.pdf}
+	\caption{Convertisseur analogique-digital 16-bits}
+\end{figure}
 
 L'unité de contrôle (UC) est reliée à tout les autres composants, et se charge de coordonner les tâches.
 
@@ -154,32 +167,31 @@ Et lorsque le système est privé d'alimentation, une copie de la mémoire est s
 Cette décision est motivée par le nombre limité d'écriture sur les supports Flash.
 En effet, avec une fréquence d'écriture de $10 H\!z$, la mémoire Flash atteindrait rapidement ses limites de réécriture.
 
-\begin{center}
-\begin{tabular}{c}
-\includegraphics[scale=0.3]{4T_SRAM_Cell.png} \\
-\textit{SRAM (source \href{http://en.wikipedia.org/wiki/Static_random-access_memory}{Wikipédia})}
-\end{tabular}
-\end{center}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{4T_SRAM_Cell.png}
+	\caption{SRAM (source \href{http://en.wikipedia.org/wiki/Static_random-access_memory}{Wikipédia})}
+\end{figure}
 
-\textbf{TODO UC description du fonctionnement (algorithmes?)}
+\todo[inline]{UC description du fonctionnement (algorithmes?)}
 
-\textbf{TODO UC implémentation en VHDL}
+\todo[inline]{UC implémentation en VHDL}
 
-\textbf{TODO HORLOGE description des choix et fonctionnalités}
+\todo[inline]{HORLOGE description des choix et fonctionnalités}
 
-\textbf{TODO HORLOGE implémentation en VHDL}
+\todo[inline]{HORLOGE implémentation en VHDL}
 
 
 \section{Interface utilisateur}
 
-\textbf{TODO fonctionnalités (boutons, affichage...)}
+\todo[inline]{fonctionnalités (boutons, affichage...)}
 
-\textbf{TODO implémentation en Java}
+\todo[inline]{implémentation en Java}
 
 
 \section{Conclusion}
 
-\textbf{TODO wtf}
+\todo[inline]{wtf}
 
 
 \end{document}

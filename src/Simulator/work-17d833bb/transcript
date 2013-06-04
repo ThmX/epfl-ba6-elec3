@@ -1,0 +1,3 @@
+# vsim -do {restart -f; run 0} -c ecu 
+# ** Error: (vsim-3170) Could not find '/mnt/hgfs/ba6-elec3/src/Simulator/work-17d833bb/work.ecu'.
+# Error loading design

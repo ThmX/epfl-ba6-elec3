@@ -34,8 +34,9 @@ public class ReportReader extends Reader {
 		// Extract report type from RegEx
 		//		# ** type: Message
 		//		+ Group 1 -> Report type
-		//		+ Group 2 -> Report message
-		Pattern pattern = Pattern.compile("^.*\\*\\* (\\w+):(.*)$", Pattern.CASE_INSENSITIVE);		
+		//		+ Group 2 -> Report time
+		//		+ Group 3 -> Report message
+		Pattern pattern = Pattern.compile("^.*\\*\\* (\\w+):(.*):(.*)$", Pattern.CASE_INSENSITIVE);		
 		Matcher matcher = pattern.matcher(line);
 		
 		// No match means the report is unknown.
@@ -44,7 +45,8 @@ public class ReportReader extends Reader {
 		}
 		
 		ReportType type = ReportType.fromName(matcher.group(1));
-		String message = matcher.group(2);
+		String time = matcher.group(2);
+		String message = matcher.group(3);
 		if (message != null) {
 			message = message.trim();
 		}

@@ -24,7 +24,9 @@ public class Main {
 		}
 
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            String lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+            //lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+			UIManager.setLookAndFeel(lookAndFeel);
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
@@ -35,10 +37,10 @@ public class Main {
 			ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "META-INF/AppContext.xml" });
 
 			// Get Lab04 ClockPane and Open the whole UI
-			context.getBean(ClockPanel.class);
+			context.getBean(ECUPanel.class);
 
 			simulatorUI ui = context.getBean(simulatorUI.class);
-			ui.setTitle("SysLog I - Lab04");
+			ui.setTitle("The ZysCar");
 
 		} catch (BeansException e) {
 			System.err.println(e);

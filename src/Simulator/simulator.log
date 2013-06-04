@@ -1,0 +1,146 @@
+2013-06-03 23:56:13,834 [main] DEBUG - Finished creating instance of bean 'log4jInitializer'
+2013-06-03 23:56:13,835 [main] DEBUG - Returning cached instance of singleton bean 'simProperties'
+2013-06-03 23:56:13,835 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2013-06-03 23:56:13,835 [main] DEBUG - Creating shared instance of singleton bean 'simConsole'
+2013-06-03 23:56:13,835 [main] DEBUG - Creating instance of bean 'simConsole'
+2013-06-03 23:56:13,836 [main] DEBUG - Eagerly caching bean 'simConsole' to allow for resolving potential circular references
+2013-06-03 23:56:13,846 [main] DEBUG - Finished creating instance of bean 'simConsole'
+2013-06-03 23:56:13,849 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2013-06-03 23:56:13,850 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2013-06-03 23:56:13,854 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2013-06-03 23:56:13,854 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2013-06-03 23:56:13,854 [main] DEBUG - Creating shared instance of singleton bean 'ecu'
+2013-06-03 23:56:13,854 [main] DEBUG - Creating instance of bean 'ecu'
+2013-06-03 23:56:13,865 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECU]: public void ch.epfl.elec3.ECU.initECU()
+2013-06-03 23:56:13,870 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECU]: public void ch.thmx.laboratory.Laboratory.initLaboratory()
+2013-06-03 23:56:13,871 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECU]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@ef9a9ce3
+2013-06-03 23:56:13,871 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECU]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@7420cc67
+2013-06-03 23:56:13,889 [main] DEBUG - Found injected element on class [ch.epfl.elec3.ECU]: ResourceElement for private ch.thmx.simulator.Simulator ch.thmx.laboratory.Laboratory.sim
+2013-06-03 23:56:13,896 [main] DEBUG - Found injected element on class [ch.epfl.elec3.ECU]: AutowiredFieldElement for private java.lang.String ch.epfl.elec3.ECU.labEntity
+2013-06-03 23:56:13,896 [main] DEBUG - Found injected element on class [ch.epfl.elec3.ECU]: AutowiredFieldElement for private java.lang.String ch.epfl.elec3.ECU.labFiles
+2013-06-03 23:56:13,896 [main] DEBUG - Eagerly caching bean 'ecu' to allow for resolving potential circular references
+2013-06-03 23:56:13,921 [main] DEBUG - Processing injected method of bean 'ecu': ResourceElement for private ch.thmx.simulator.Simulator ch.thmx.laboratory.Laboratory.sim
+2013-06-03 23:56:13,927 [main] DEBUG - Creating instance of bean 'modelsim'
+2013-06-03 23:56:13,930 [main] DEBUG - Found init method on class [ch.thmx.simulator.modelsim.ModelSim]: public void ch.thmx.simulator.Simulator.init()
+2013-06-03 23:56:13,934 [main] DEBUG - Found init method on class [ch.thmx.simulator.modelsim.ModelSim]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@316510
+2013-06-03 23:56:13,935 [Thread-0] INFO - Started TaskManager[10]...
+2013-06-03 23:56:13,936 [main] DEBUG - Found injected element on class [ch.thmx.simulator.modelsim.ModelSim]: ResourceElement for private ch.thmx.simulator.SimConsole ch.thmx.simulator.Simulator.simConsole
+2013-06-03 23:56:13,937 [main] DEBUG - Found injected element on class [ch.thmx.simulator.modelsim.ModelSim]: AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vcom
+2013-06-03 23:56:13,937 [main] DEBUG - Found injected element on class [ch.thmx.simulator.modelsim.ModelSim]: AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vlib
+2013-06-03 23:56:13,937 [main] DEBUG - Found injected element on class [ch.thmx.simulator.modelsim.ModelSim]: AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vsim
+2013-06-03 23:56:13,948 [main] DEBUG - Processing injected method of bean 'modelsim': ResourceElement for private ch.thmx.simulator.SimConsole ch.thmx.simulator.Simulator.simConsole
+2013-06-03 23:56:13,952 [main] DEBUG - Returning cached instance of singleton bean 'simConsole'
+2013-06-03 23:56:13,953 [main] DEBUG - Processing injected method of bean 'modelsim': AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vcom
+2013-06-03 23:56:13,954 [main] DEBUG - Processing injected method of bean 'modelsim': AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vlib
+2013-06-03 23:56:13,955 [main] DEBUG - Processing injected method of bean 'modelsim': AutowiredFieldElement for private java.lang.String ch.thmx.simulator.modelsim.ModelSim.vsim
+2013-06-03 23:56:13,955 [main] DEBUG - Invoking init method on bean 'modelsim': public void ch.thmx.simulator.Simulator.init()
+2013-06-03 23:56:13,956 [main] INFO - Initialized ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:13,956 [main] DEBUG - Finished creating instance of bean 'modelsim'
+2013-06-03 23:56:13,957 [main] DEBUG - Processing injected method of bean 'ecu': AutowiredFieldElement for private java.lang.String ch.epfl.elec3.ECU.labEntity
+2013-06-03 23:56:13,957 [main] DEBUG - Processing injected method of bean 'ecu': AutowiredFieldElement for private java.lang.String ch.epfl.elec3.ECU.labFiles
+2013-06-03 23:56:13,957 [main] DEBUG - Invoking init method on bean 'ecu': public void ch.thmx.laboratory.Laboratory.initLaboratory()
+2013-06-03 23:56:13,957 [main] DEBUG - Invoking init method on bean 'ecu': public void ch.epfl.elec3.ECU.initECU()
+2013-06-03 23:56:13,957 [main] DEBUG - Finished creating instance of bean 'ecu'
+2013-06-03 23:56:13,958 [main] DEBUG - Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0'
+2013-06-03 23:56:13,963 [main] DEBUG - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@1561435]
+2013-06-03 23:56:13,963 [main] DEBUG - Returning cached instance of singleton bean 'lifecycleProcessor'
+2013-06-03 23:56:13,964 [main] DEBUG - Creating shared instance of singleton bean 'ecuPane'
+2013-06-03 23:56:13,964 [main] DEBUG - Creating instance of bean 'ecuPane'
+2013-06-03 23:56:14,097 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECUPanel]: public void ch.epfl.elec3.ECUPanel.initTimestampPane()
+2013-06-03 23:56:14,134 [main] DEBUG - Found init method on class [ch.epfl.elec3.ECUPanel]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@df5f0a6e
+2013-06-03 23:56:14,211 [main] DEBUG - Found injected element on class [ch.epfl.elec3.ECUPanel]: ResourceElement for private ch.thmx.simulator.ui.simulatorUI ch.epfl.elec3.ECUPanel.simulatorUI
+2013-06-03 23:56:14,212 [main] DEBUG - Found injected element on class [ch.epfl.elec3.ECUPanel]: ResourceElement for ch.epfl.elec3.ECU ch.epfl.elec3.ECUPanel.ecu
+2013-06-03 23:56:14,220 [main] DEBUG - Eagerly caching bean 'ecuPane' to allow for resolving potential circular references
+2013-06-03 23:56:14,293 [main] DEBUG - Could not add indexed write method [public void java.awt.Component.setSize(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:14,316 [main] DEBUG - Could not add indexed write method [public void java.awt.Component.setLocation(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:14,626 [main] DEBUG - Could not add indexed write method [public final void javax.swing.JComponent.setInputMap(int,javax.swing.InputMap)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:14,635 [main] DEBUG - Could not add indexed write method [public void javax.swing.JComponent.setFocusTraversalKeys(int,java.util.Set)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:14,826 [main] DEBUG - Processing injected method of bean 'ecuPane': ResourceElement for private ch.thmx.simulator.ui.simulatorUI ch.epfl.elec3.ECUPanel.simulatorUI
+2013-06-03 23:56:14,826 [main] DEBUG - Creating shared instance of singleton bean 'simulatorUI'
+2013-06-03 23:56:14,826 [main] DEBUG - Creating instance of bean 'simulatorUI'
+2013-06-03 23:56:14,845 [main] DEBUG - Found init method on class [ch.thmx.simulator.ui.simulatorUI]: public void ch.thmx.simulator.ui.simulatorUI.init()
+2013-06-03 23:56:14,852 [main] DEBUG - Found init method on class [ch.thmx.simulator.ui.simulatorUI]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@316510
+2013-06-03 23:56:14,897 [main] DEBUG - Found injected element on class [ch.thmx.simulator.ui.simulatorUI]: ResourceElement for private ch.thmx.simulator.ui.ConsolePane ch.thmx.simulator.ui.simulatorUI.consolePane
+2013-06-03 23:56:14,905 [main] DEBUG - Eagerly caching bean 'simulatorUI' to allow for resolving potential circular references
+2013-06-03 23:56:14,977 [main] DEBUG - Could not add indexed write method [public void java.awt.Window.setLocation(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:15,364 [main] DEBUG - Could not add indexed write method [public void java.awt.Container.setFocusTraversalKeys(int,java.util.Set)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:15,558 [main] DEBUG - Could not add indexed write method [public void java.awt.Window.setSize(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:15,616 [main] DEBUG - Processing injected method of bean 'simulatorUI': ResourceElement for private ch.thmx.simulator.ui.ConsolePane ch.thmx.simulator.ui.simulatorUI.consolePane
+2013-06-03 23:56:15,616 [main] DEBUG - Creating shared instance of singleton bean 'consolePane'
+2013-06-03 23:56:15,616 [main] DEBUG - Creating instance of bean 'consolePane'
+2013-06-03 23:56:15,712 [main] DEBUG - Found init method on class [ch.thmx.simulator.ui.ConsolePane]: public void ch.thmx.simulator.ui.ConsolePane.init()
+2013-06-03 23:56:15,715 [main] DEBUG - Found init method on class [ch.thmx.simulator.ui.ConsolePane]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@316510
+2013-06-03 23:56:15,750 [main] DEBUG - Found injected element on class [ch.thmx.simulator.ui.ConsolePane]: ResourceElement for private ch.thmx.simulator.SimConsole ch.thmx.simulator.ui.ConsolePane.simConsole
+2013-06-03 23:56:15,767 [main] DEBUG - Eagerly caching bean 'consolePane' to allow for resolving potential circular references
+2013-06-03 23:56:15,814 [main] DEBUG - Could not add indexed write method [public void java.awt.Component.setSize(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:15,852 [main] DEBUG - Could not add indexed write method [public void java.awt.Component.setLocation(int,int)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:16,143 [main] DEBUG - Could not add indexed write method [public final void javax.swing.JComponent.setInputMap(int,javax.swing.InputMap)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:16,151 [main] DEBUG - Could not add indexed write method [public void javax.swing.JComponent.setFocusTraversalKeys(int,java.util.Set)] for property [component]. Reason: type mismatch between indexed read and indexed write methods: component
+2013-06-03 23:56:16,320 [main] DEBUG - Processing injected method of bean 'consolePane': ResourceElement for private ch.thmx.simulator.SimConsole ch.thmx.simulator.ui.ConsolePane.simConsole
+2013-06-03 23:56:16,321 [main] DEBUG - Returning cached instance of singleton bean 'simConsole'
+2013-06-03 23:56:16,321 [main] DEBUG - Invoking init method on bean 'consolePane': public void ch.thmx.simulator.ui.ConsolePane.init()
+2013-06-03 23:56:16,321 [main] DEBUG - Finished creating instance of bean 'consolePane'
+2013-06-03 23:56:16,321 [main] DEBUG - Invoking init method on bean 'simulatorUI': public void ch.thmx.simulator.ui.simulatorUI.init()
+2013-06-03 23:56:16,504 [main] DEBUG - Finished creating instance of bean 'simulatorUI'
+2013-06-03 23:56:16,505 [main] DEBUG - Processing injected method of bean 'ecuPane': ResourceElement for ch.epfl.elec3.ECU ch.epfl.elec3.ECUPanel.ecu
+2013-06-03 23:56:16,505 [main] DEBUG - Returning cached instance of singleton bean 'ecu'
+2013-06-03 23:56:16,506 [main] DEBUG - Invoking init method on bean 'ecuPane': public void ch.epfl.elec3.ECUPanel.initTimestampPane()
+2013-06-03 23:56:16,507 [main] INFO - Adding tab Clock
+2013-06-03 23:56:16,518 [main] DEBUG - Finished creating instance of bean 'ecuPane'
+2013-06-03 23:56:16,518 [main] DEBUG - Returning cached instance of singleton bean 'simulatorUI'
+2013-06-03 23:56:44,147 [AWT-EventQueue-0] INFO - Changed work directory: /mnt/hgfs/ba6-elec3/src/Simulator/work-17d833bb
+2013-06-03 23:56:44,152 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,250 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,250 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,251 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/utils.vhd]
+2013-06-03 23:56:44,331 [Thread-3] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,391 [Thread-3] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/utils.vhd" in read mode.]
+2013-06-03 23:56:44,394 [Thread-3] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,412 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,412 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,412 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/ecu_chrono.vhd]
+2013-06-03 23:56:44,461 [Thread-5] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,463 [Thread-5] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/ecu_chrono.vhd" in read mode.]
+2013-06-03 23:56:44,464 [Thread-5] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,483 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,484 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,484 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/ecu_clock.vhd]
+2013-06-03 23:56:44,542 [Thread-7] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,544 [Thread-7] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/ecu_clock.vhd" in read mode.]
+2013-06-03 23:56:44,545 [Thread-7] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,566 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,566 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,567 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/ecu.vhd]
+2013-06-03 23:56:44,638 [Thread-9] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,642 [Thread-9] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/ecu.vhd" in read mode.]
+2013-06-03 23:56:44,644 [Thread-9] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,665 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,672 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,673 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/sim/txt_util.vhd]
+2013-06-03 23:56:44,752 [Thread-11] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,756 [Thread-11] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/sim/txt_util.vhd" in read mode.]
+2013-06-03 23:56:44,758 [Thread-11] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,777 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,777 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,777 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/sim/vUnit.vhd]
+2013-06-03 23:56:44,885 [Thread-13] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:44,889 [Thread-13] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/sim/vUnit.vhd" in read mode.]
+2013-06-03 23:56:44,890 [Thread-13] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:44,928 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,929 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:44,929 [Thread-0] INFO - Read report: Compile [message=Compiling ../vhdl/sim/simulator.vhd]
+2013-06-03 23:56:45,010 [Thread-15] INFO - Read report: Unknown [message=Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012]
+2013-06-03 23:56:45,018 [Thread-15] INFO - Read report: Unknown [message=(vcom-7) Failed to open design unit file "../vhdl/sim/simulator.vhd" in read mode.]
+2013-06-03 23:56:45,020 [Thread-15] INFO - Read report: Unknown [message=No such file or directory. (errno = ENOENT)]
+2013-06-03 23:56:45,060 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:45,060 [Thread-0] INFO - Launching task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]
+2013-06-03 23:56:45,061 [Thread-0] INFO - Read report: Simulate [message=Simulating ecu]
+2013-06-03 23:56:45,710 [Thread-17] INFO - Read report: Unknown [message=Reading /opt/altera/13.0/modelsim_ase/tcl/vsim/pref.tcl ]
+2013-06-03 23:56:45,723 [Thread-17] INFO - Read report: Unknown [message=]
+2013-06-03 23:56:45,724 [Thread-17] INFO - Read report: Unknown [message=# 10.1d]
+2013-06-03 23:56:45,727 [Thread-17] INFO - Read report: Unknown [message=]
+2013-06-03 23:56:46,053 [Thread-17] INFO - Read report: Unknown [message=# vsim -do {restart -f; run 0} -c ecu ]
+2013-06-03 23:56:46,152 [Thread-17] INFO - Read report: Unknown [message=(vsim-3170) Could not find '/mnt/hgfs/ba6-elec3/src/Simulator/work-17d833bb/work.ecu'.]
+2013-06-03 23:56:46,155 [Thread-17] INFO - Read report: Unknown [message=# Error loading design]
+2013-06-03 23:56:46,157 [Thread-18] INFO - Read report: Unknown [message=Error loading design]
+2013-06-03 23:56:46,446 [Thread-0] INFO - Ended task: ModelSim [vcom=vcom, vlib=vlib, vsim=vsim]

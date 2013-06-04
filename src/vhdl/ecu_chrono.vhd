@@ -13,6 +13,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 use work.utils.all;
 
@@ -23,36 +24,33 @@ entity ecu_chrono is
 
 		cs         : in  ubit;
 		start_stop : in  ubit;
-		clear      : in  uword;
+		clear      : in  ubit;
 
-		timestamp  : out uword
+		timestamp  : out udword
 	);
 end entity ecu_chrono;
 
 architecture RTL of ecu_chrono is
-	signal timestamp_intern : uword;
+	signal timestamp_intern : udword;
 	signal run              : ubit;
 begin
 	timestamp <= timestamp_intern;
 
 	process(clk, rst) is
 	begin
-		if rising_edge(clk) then
-			if rst = '1' then
-				timestamp_intern <= (others => '0');
-				run              <= '0';
+		if rst = '1' then
+			timestamp_intern <= (others => '0');
+			run              <= '0';
+		elsif rising_edge(clk) then
+			if is_set(run) then
+				timestamp_intern <= timestamp_intern + 1;
+			end if;
 
-			else
-				if is_set(run) then
-					timestamp_intern <= timestamp_intern + 1;
-				end if;
-
-				if is_set(cs) then
-					if is_set(clear) then
-						timestamp_intern <= (others => '0');
-					elsif is_set(start_stop) then
-						run <= not run;
-					end if;
+			if is_set(cs) then
+				if is_set(clear) then
+					timestamp_intern <= (others => '0');
+				elsif is_set(start_stop) then
+					run <= not run;
 				end if;
 			end if;
 		end if;

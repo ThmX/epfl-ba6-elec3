@@ -13,6 +13,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 use work.utils.all;
 
@@ -23,27 +24,26 @@ entity ecu_clock is
 
 		cs        : in  ubit;
 		load      : in  ubit;
-		value     : in  uword;
+		value     : in  udword;
 
-		timestamp : out uword
+		timestamp : out udword
 	);
 end entity ecu_clock;
 
 architecture RTL of ecu_clock is
-	signal timestamp_intern : uword;
+	signal timestamp_intern : udword;
 begin
 	timestamp <= timestamp_intern;
 
 	process(clk, rst) is
 	begin
-		if rising_edge(clk) then
-			if rst = '1' then
-				timestamp_intern <= (others => '0');
-			else
-				timestamp_intern <= timestamp_intern + 1;
-				if is_set(cs) and is_set(load) then
-					timestamp_intern <= value;
-				end if;
+		if rst = '1' then
+			timestamp_intern <= (others => '0');
+			
+		elsif rising_edge(clk) then
+			timestamp_intern <= timestamp_intern + 1;
+			if is_set(cs) and is_set(load) then
+				timestamp_intern <= value;
 			end if;
 		end if;
 	end process;

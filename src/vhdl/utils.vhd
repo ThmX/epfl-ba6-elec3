@@ -19,7 +19,10 @@ package utils is
 	subtype ubits is unsigned;
 	subtype ubit is std_logic;
 
-	subtype uword is ubits(31 downto 0);
+	subtype ubyte is ubits(7 downto 0);
+	subtype uword is ubits(15 downto 0);
+	subtype udword is ubits(31 downto 0);
+	subtype uddword is ubits(63 downto 0);
 
 	function is_set(b : ubit) return boolean;
 	function are_set(b : ubits) return boolean;
