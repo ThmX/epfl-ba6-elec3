@@ -24,8 +24,10 @@ public class Main {
 		}
 
 		try {
-            String lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
-            //lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+			String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+			if (System.getProperty("os.name").equals("Unix")) {
+				lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+			}
 			UIManager.setLookAndFeel(lookAndFeel);
 
 		} catch (Exception e) {

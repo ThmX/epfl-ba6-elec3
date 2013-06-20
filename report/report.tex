@@ -1,21 +1,9 @@
-
-
-
-
-
-
-
 %------------------------------------------------------------------------------
 %
-%	BA6 - Database systems
+%	BA6 - Elec III
 %
 %	Authors :
-%		203267 - Bastien Antoine
-%		183785 - Denoréaz Thomas
-%		185078 - Dieulivol David
-%
-%	Versions :
-%		2013.03.30 - Initial version
+%		Alex, Johan, Thomas
 %
 
 %--------------DOCUMENT--------------------------------------------------------
@@ -219,20 +207,19 @@ En effet, avec une fréquence d'écriture de $10 H\!z$, la mémoire Flash attein
 	\caption{SRAM (source \href{http://en.wikipedia.org/wiki/Static_random-access_memory}{Wikipédia})}
 \end{figure}
 
-\todo[inline]{UC description du fonctionnement (algorithmes?)}
-
 \subsection{Clock}
+La gestion de l'heure a été faite à l'aide du circuit décrit par le code VHDL suivant, celui-ci retourne un \textit{timestamp} de l'heure actuelle, ce module peut être configuré depuis l'ECU.
 \lstinputlisting[caption=Module de contrôle de l'horloge]{ecu_clock.vhd}
 
-\subsection{Electronic Control Unit}
+\subsection{ECU (Electronic Control Unit)}
 
-\missingfigure{Graphe des états}
+L'idée est de contrôler tous les modules ainsi que les capteurs dans l'unité de contrôle électronique.
+
+Voici le code VHDL permettant de décrire ce circuit, et ainsi de le simuler:
 
 \lstinputlisting[caption=Module de gestion du système (UC)]{ecu.vhd}
 
 \section{Simulation - interface utilisateur}
-
-\missingfigure{Java UI}
 
 L'interface utilisateur a été implémenté en utilisant en tâche de fond \textit{ModelSim}, qui permet de simuler du code VHDL.
 L'idée est d'utiliser directement le vrai code VHDL de notre interface en simulant les entrées/sorties du système de mesure.
@@ -241,15 +228,22 @@ Le module d'affichage a été développé en Java, en utilisant le framework \te
 Le module de simulation est une coopération entre Java et VHDL.
 En VHDL la simulation est effectuée, alors qu'en Java le traitement des données est fait.
 
-\todo[inline]{fonctionnalités (boutons, affichage...)}
 
+Pour l'utiliser, il faut appuyer sur l'accélérateur et ainsi voir la voiture avancer, et pour l'arrêter appuyer sur le frein.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{ZysCar.png}
+	\caption{The ZysCar}
+\end{figure}
+
+\newpage
 Voici un exemple de listing permettant de contrôler le simulateur.
 
 \lstinputlisting[caption=Testbench de contrôle du Simuateur en VHDL]{simulator.vhd}
 
-
 \section{Conclusion}
 
-\todo[inline]{Just say something here -\_-}
+Il est intéressant de voir que même à l'aide d'un simulateur, un tel projet peut être mené à bien. Il ne reste plus qu'à créer des prototypes de tous les circuits afin de tester et vérifier nos hypothèses, si celles-ci se montrent erroné, il sera toujours possible de modifier certains des modules pour recadrer le projet dans la bonne direction.
 
 \end{document}

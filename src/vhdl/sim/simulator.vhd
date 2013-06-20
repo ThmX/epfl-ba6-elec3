@@ -100,6 +100,7 @@ begin
 				end if;
 			elsif sim_accelerate = '1' then
 				sensor_velocity <= sensor_velocity + 1;
+				sensor_engine <= sensor_engine + ('0' & sensor_velocity(31 downto 1));
 			end if;
 
 			if mmu_rw = '1' then

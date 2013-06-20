@@ -1,5 +1,5 @@
 -- ------------------------------------------------------------------
--- --- ecu_simulator.vhd
+-- --- clock_simulator.vhd
 -- ------------------------------------------------------------------
 -- --- Project	: LabSimulator - Package Library
 -- --- Authors	:
@@ -9,7 +9,6 @@
 -- ---
 -- --- Versions	:
 -- --- 		- 2013.03.19 - Initial version
--- --- 		- 2013.06.02 - Simulated memory
 -- ------------------------------------------------------------------
 
 library ieee;
@@ -46,15 +45,15 @@ architecture simulator of ecu_simulator is
 	signal sensor_engine    : udword := (others => '0');
 	signal sensor_timestamp : udword := (others => '0');
 
-	-- ----- Simulated value ----------------------------------------
+	-- ----- Simulated value ------------------------------------------
 	signal sim_accelerate : ubit := '0';
 	signal sim_brake      : ubit := '0';
 
 begin
 
-	-- --------------------------------------------------------------
-	-- ----- Simulated circuit --------------------------------------
-	-- --------------------------------------------------------------
+	-- ----------------------------------------------------------------
+	-- ----- Simulated circuit ----------------------------------------
+	-- ----------------------------------------------------------------
 
 	-- Electronic Control Unit
 
@@ -72,9 +71,9 @@ begin
 			     distance  => distance,
 			     timestamp => timestamp);
 
-	-- --------------------------------------------------------------
-	-- ----- Memory implementation ----------------------------------
-	-- --------------------------------------------------------------
+	-- ----------------------------------------------------------------
+	-- ----- Memory implementation ------------------------------------
+	-- ----------------------------------------------------------------
 	mmu_read : process(mmu_addr, sensor_velocity, sensor_engine, sensor_timestamp) is
 	begin
 		case mmu_addr is
@@ -101,6 +100,7 @@ begin
 				end if;
 			elsif sim_accelerate = '1' then
 				sensor_velocity <= sensor_velocity + 1;
+				sensor_engine <= sensor_engine + ('0' & sensor_velocity(31 downto 1));
 			end if;
 
 			if mmu_rw = '1' then
